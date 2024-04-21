@@ -5,6 +5,7 @@ namespace WinFormsListAdvansApp
         public Form1()
         {
             InitializeComponent();
+            timer.Enabled = false;
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
@@ -17,6 +18,33 @@ namespace WinFormsListAdvansApp
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(255, trackRed.Value, trackGreen.Value, trackBlue.Value);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            progressBar.PerformStep();
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            progressBar.Value = 0;
+            progressBar.Maximum = 100;
+            progressBar.Step = 1;
+
+            timer.Interval = 100;
+
+            if (timer.Enabled)
+            {
+                timer.Stop();
+                ((Button)sender).Text = "Start";
+            }
+            else
+            {
+                timer.Start();
+                ((Button)sender).Text = "Stop";
+            }
+
+            
         }
     }
 }

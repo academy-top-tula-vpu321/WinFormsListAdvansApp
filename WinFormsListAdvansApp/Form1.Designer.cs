@@ -42,6 +42,9 @@
             label1 = new Label();
             trackGreen = new TrackBar();
             trackBlue = new TrackBar();
+            progressBar = new ProgressBar();
+            timer = new System.Windows.Forms.Timer(components);
+            btnStart = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackRed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackGreen).BeginInit();
@@ -135,11 +138,13 @@
             // 
             // trackRed
             // 
-            trackRed.Location = new Point(322, 251);
+            trackRed.Location = new Point(454, 34);
             trackRed.Maximum = 255;
             trackRed.Name = "trackRed";
             trackRed.Size = new Size(334, 45);
             trackRed.TabIndex = 7;
+            trackRed.TickFrequency = 10;
+            trackRed.Value = 50;
             trackRed.Scroll += trackBar1_Scroll;
             // 
             // label1
@@ -153,7 +158,7 @@
             // 
             // trackGreen
             // 
-            trackGreen.Location = new Point(322, 302);
+            trackGreen.Location = new Point(454, 82);
             trackGreen.Maximum = 255;
             trackGreen.Name = "trackGreen";
             trackGreen.Size = new Size(334, 45);
@@ -162,18 +167,44 @@
             // 
             // trackBlue
             // 
-            trackBlue.Location = new Point(322, 353);
+            trackBlue.Location = new Point(454, 133);
             trackBlue.Maximum = 255;
             trackBlue.Name = "trackBlue";
             trackBlue.Size = new Size(334, 45);
             trackBlue.TabIndex = 7;
             trackBlue.Scroll += trackBar1_Scroll;
             // 
+            // progressBar
+            // 
+            progressBar.Location = new Point(337, 251);
+            progressBar.Maximum = 10;
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(451, 57);
+            progressBar.TabIndex = 9;
+            // 
+            // timer
+            // 
+            timer.Interval = 500;
+            timer.Tick += timer_Tick;
+            // 
+            // btnStart
+            // 
+            btnStart.Font = new Font("Segoe UI", 20F);
+            btnStart.Location = new Point(493, 323);
+            btnStart.Name = "btnStart";
+            btnStart.Size = new Size(126, 55);
+            btnStart.TabIndex = 10;
+            btnStart.Text = "Start";
+            btnStart.UseVisualStyleBackColor = true;
+            btnStart.Click += btnStart_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnStart);
+            Controls.Add(progressBar);
             Controls.Add(label1);
             Controls.Add(trackBlue);
             Controls.Add(trackGreen);
@@ -209,5 +240,8 @@
         private Label label1;
         private TrackBar trackGreen;
         private TrackBar trackBlue;
+        private ProgressBar progressBar;
+        private System.Windows.Forms.Timer timer;
+        private Button btnStart;
     }
 }
